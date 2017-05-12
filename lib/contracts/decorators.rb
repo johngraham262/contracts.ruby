@@ -10,13 +10,13 @@ module Contracts
     end
 
     def method_added(name)
-      return if ENV["NO_CONTRACTS"]
+      return super if ENV["NO_CONTRACTS"]
       MethodHandler.new(name, false, self).handle
       super
     end
 
     def singleton_method_added(name)
-      return if ENV["NO_CONTRACTS"]
+      return super if ENV["NO_CONTRACTS"]
       MethodHandler.new(name, true, self).handle
       super
     end
